@@ -9,20 +9,11 @@ const client = "https://63f67f8a59c944921f752b54.mockapi.io/api/users";
 
 function App() {
   const [places, setPlaces] = useState("");
+  const [photos, setPhotos] = useState(null);
+  const [cityState, setCityState] = useState("Gniezno");
 
-  useEffect(() => {
-    fetch(client)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setPlaces(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+  console.log(photos);
 
-  console.log(places);
   return (
     <Box>
       <h1>Places I have been</h1>
