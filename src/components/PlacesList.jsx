@@ -19,7 +19,7 @@ const PlacesList = ({ places }) => {
     <Grid container spacing={2}>
       {places &&
         places.map((place) => (
-          <Grid xs={12} sm={4}>
+          <Grid xs={12} sm={4} key={Math.random()}>
             <Item>
               <PlacesListItem place={place} />
             </Item>
