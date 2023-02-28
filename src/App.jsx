@@ -11,6 +11,11 @@ const client = "https://63f67f8a59c944921f752b54.mockapi.io/api/users";
 
 function App() {
   const [places, setPlaces] = useState("");
+  const [placeName, setPlaceName] = useState("");
+
+  const placeNameHandler = (input) => {
+    setPlaceName(input);
+  };
 
   useEffect(() => {
     fetchClient();
@@ -31,7 +36,7 @@ function App() {
   return (
     <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
       <h1>Places I have been</h1>
-      <AddNewPlace />
+      <AddNewPlace placeNameHandler={placeNameHandler} placeName={placeName} />
       <PlacesList places={places} />
     </Box>
   );
