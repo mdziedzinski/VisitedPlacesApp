@@ -1,8 +1,11 @@
 import React from "react";
-import { Grid, Container } from "@mui/material";
+import { Grid, Container, Rating } from "@mui/material";
 import PlaceAutocompleteForm from "./Forms/PlaceAutocompleField";
 import PlaceAutocompleteField from "./Forms/PlaceAutocompleField";
 import NoteField from "./Forms/NoteField";
+import RatingField from "./Forms/RatingField";
+import PhotoField from "./Forms/PhotoField";
+import DateField from "./Forms/DateField";
 
 const AddNewPlace = ({ placeNameHandler, placeName }) => {
   return (
@@ -12,17 +15,20 @@ const AddNewPlace = ({ placeNameHandler, placeName }) => {
       spacing={0}
       style={{ backgroundColor: "yellow", color: "black" }}
     >
-      <Grid item xs={6} padding={2}>
+      <Grid item xs={4} padding={2}>
         <PlaceAutocompleteField />
       </Grid>
-      <Grid item xs={6} padding={2}>
+      <Grid item xs={4} padding={2}>
+        <DateField />
+      </Grid>
+      <Grid item xs={4} padding={2}>
+        <RatingField />
+      </Grid>
+      <Grid item xs={12} padding={2}>
         <NoteField />
       </Grid>
-      <Grid item xs={6}>
-        1
-      </Grid>
-      <Grid item xs={6}>
-        1
+      <Grid item xs={12} padding={2}>
+        <PhotoField />
       </Grid>
     </Grid>
   );
