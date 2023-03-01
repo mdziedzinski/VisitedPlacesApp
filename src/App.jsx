@@ -35,8 +35,8 @@ function App() {
   // console.log(photo);
 
   return (
-    <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
-     <Typography variant='h1'>Places I've been</Typography>
+    <Box sx={{ width: "100%", maxWidth:'100%', display: "flex", flexDirection: "column" }}>
+      <Typography variant="h1">Places I've been</Typography>
       <AddNewPlace placeNameHandler={placeNameHandler} placeName={placeName} />
       <PlacesList places={places} />
     </Box>
