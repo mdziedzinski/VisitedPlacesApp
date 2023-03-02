@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import { useRef } from "react";
 import { usePlacesWidget } from "react-google-autocomplete";
 
-const PlaceAutocompleteField = () => {
+const PlaceAutocompleteField = ({placeNameHandler}) => {
   const { ref: materialRef } = usePlacesWidget({
     apiKey: import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY,
     onPlaceSelected: (place) => {

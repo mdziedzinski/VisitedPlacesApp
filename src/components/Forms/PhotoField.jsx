@@ -6,7 +6,7 @@ const PhotoField = () => {
     <TextField
       fullWidth
       label="Paste an url to a photo"
-      placeholder="Leave it empty to generate a photo"
+      placeholder="Leave it empty to generate a photo from Unsplash"
       margin="2"
     ></TextField>
   );
