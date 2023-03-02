@@ -1,6 +1,5 @@
 import React from "react";
-import { Grid, Container, Rating, Button } from "@mui/material";
-import PlaceAutocompleteForm from "./Forms/PlaceAutocompleField";
+import { Grid, Container, Rating, Button, Box, Paper } from "@mui/material";
 import PlaceAutocompleteField from "./Forms/PlaceAutocompleField";
 import NoteField from "./Forms/NoteField";
 import RatingField from "./Forms/RatingField";
@@ -15,34 +14,32 @@ const onSubmit = (e) => {
 const AddNewPlace = ({ placeNameHandler, placeName }) => {
   return (
     <form onSubmit={onSubmit}>
-      <Grid
-        sx={{ maxWidth: "100%", marginBlock: 3 }}
-        container
-        spacing={0}
-        style={{
-          backgroundColor: "grey",
-          color: "black",
-        }}
-      >
-        <Grid item xs={4} padding={2}>
-          <PlaceAutocompleteField placeNameHandler={placeNameHandler} />
-        </Grid>
-        <Grid item xs={4} padding={2}>
-          <DateField />
-        </Grid>
-        <Grid item xs={4} padding={2}>
-          <RatingField />
-        </Grid>
-        <Grid item xs={12} padding={2}>
-          <NoteField />
-        </Grid>
-        <Grid item xs={12} padding={2}>
-          <PhotoField />
-        </Grid>
-        <Grid item xs={4} padding={2}>
-          <Button variant="contained" type="submit">Add memory</Button>
-        </Grid>
-      </Grid>
+      <Paper elevation={3}>
+        <Container>
+          <Grid sx={{ maxWidth: "100%", marginBlock: 3 }} container spacing={0}>
+            <Grid item xs={4} padding={2}>
+              <PlaceAutocompleteField placeNameHandler={placeNameHandler} />
+            </Grid>
+            <Grid item xs={4} padding={2}>
+              <DateField />
+            </Grid>
+            <Grid item xs={4} padding={2}>
+              <RatingField />
+            </Grid>
+            <Grid item xs={6} padding={2}>
+              <NoteField />
+            </Grid>
+            <Grid item xs={6} padding={2}>
+              <PhotoField />
+            </Grid>
+            <Grid justifyContent="center" xs={12} padding={2}>
+              <Button fullWidth variant="contained" type="submit">
+                Add memory
+              </Button>
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
     </form>
   );
 };

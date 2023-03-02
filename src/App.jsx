@@ -6,7 +6,7 @@ import PlacesList from "./components/PlacesList";
 import Box from "@mui/material/Box";
 import { createApi } from "unsplash-js";
 import AddNewPlace from "./components/AddNewPlace";
-import { Typography } from "@mui/material";
+import { Typography, Container } from "@mui/material";
 
 const client = "https://63f67f8a59c944921f752b54.mockapi.io/api/users";
 
@@ -35,10 +35,15 @@ function App() {
   // console.log(photo);
 
   return (
-    <Box sx={{ width: "100%", maxWidth:'100%', display: "flex", flexDirection: "column" }}>
-      <Typography variant="h1">Places I've been</Typography>
-      <AddNewPlace placeNameHandler={placeNameHandler} placeName={placeName} />
-      <PlacesList places={places} />
+    <Box bgcolor="slategray">
+      <Container>
+        <Typography textAlign='center' variant="h1">Places I've been</Typography>
+        <AddNewPlace
+          placeNameHandler={placeNameHandler}
+          placeName={placeName}
+        />
+        <PlacesList places={places} />
+      </Container>
     </Box>
   );
 }
