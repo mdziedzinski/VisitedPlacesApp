@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import { createApi } from "unsplash-js";
 import AddNewPlace from "./components/AddNewPlace";
 import { Typography, Container } from "@mui/material";
+import Search from "./components/Search";
 
 const client = "https://63f67f8a59c944921f752b54.mockapi.io/api/users";
 
@@ -37,7 +38,10 @@ function App() {
   return (
     <Box bgcolor="slategray">
       <Container>
-        <Typography textAlign='center' variant="h1">Places I've been</Typography>
+        <Typography textAlign="center" variant="h1">
+          Places I've been
+        </Typography>
+        <Search />
         <AddNewPlace
           placeNameHandler={placeNameHandler}
           placeName={placeName}

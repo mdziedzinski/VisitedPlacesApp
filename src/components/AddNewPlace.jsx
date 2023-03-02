@@ -14,7 +14,7 @@ const onSubmit = (e) => {
 const AddNewPlace = ({ placeNameHandler, placeName }) => {
   return (
     <form onSubmit={onSubmit}>
-      <Paper elevation={3}>
+      <Paper elevation={12}>
         <Container>
           <Grid sx={{ maxWidth: "100%", marginBlock: 3 }} container spacing={0}>
             <Grid item xs={4} padding={2}>
