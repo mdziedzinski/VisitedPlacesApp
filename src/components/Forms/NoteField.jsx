@@ -7,8 +7,7 @@ const NoteField = () => {
       fullWidth
       label="Make a note"
       placeholder="I loved it because..."
-      margin="2"
-    ></TextField>
+    />
   );
 };
 

@@ -5,36 +5,61 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from "@mui/material";
 import axios from "axios";
+import Skeleton from "@mui/material/Skeleton";
+
 import { useState, useEffect } from "react";
 
 const PlacesListItem = ({ place }) => {
   const date = new Date(place.date);
   const photoQuery = place.city;
-  const [photo, setPhoto] = useState("");
-  const apiURL = `https://api.unsplash.com/search/photos?page=1&photos?&query=${photoQuery}&client_id=${
-    import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY
-  }&per_page=1`;
 
-  const fetchRequest = async () => {
-    await fetch(
-      `https://api.unsplash.com/search/photos?page=1&photos?&query=${photoQuery}&client_id=${
-        import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY
-      }&per_page=1`
-    )
-      .then((response) => response.json())
-      .then((data) =>
-        setTimeout(() => {
-          setPhoto(data.results[0]);
-        }, 50)
-      );
+  const [photo, setPhoto] = useState("");
+
+  const getImages = async () => {
+    const response = await axios
+      .get(`https://api.unsplash.com/photos/random`, {
+        headers: {
+          Authorization: `Client-ID ${
+            import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY
+          }`,
+        },
+        params: {
+          query: `${photoQuery} ? ${photoQuery} : 'city'`,
+          count: 1,
+        },
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
+
+    setPhoto(response.data[0]);
+
+    console.log(response.data[0]);
+    return response;
   };
 
-  useEffect(() => {
-    fetchRequest();
-  }, []);
+  // const fetchRequest = async () => {
+  //   await fetch(
+  //     `https://api.unsplash.com/search/photos?page=1&photos?&query=${photoQuery}&client_id=${
+  //       import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY
+  //     }&per_page=1`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) =>
+  //       setTimeout(() => {
+  //         setPhoto(data.results[0]);
+  //       }, 50)
+  //     );
+  // };
 
-  return (
+  useEffect(() => {
+    // fetchRequest();
+    getImages();
+  }, [photoQuery]);
+
+  const contentCard = (
     <Card>
       <CardMedia
         component="img"
@@ -49,6 +74,14 @@ const PlacesListItem = ({ place }) => {
         <Typography variant="overline" display="block" gutterBottom>
           visited on {date.toLocaleDateString()}
         </Typography>
+        <Typography variant="overline" display="block" gutterBottom>
+          Photo by
+          <Link href={photo ? photo.user.links.html : "test"}>
+            {photo ? photo.user.first_name : "test"}
+          </Link>
+          on
+          <Link href="https://unsplash.com/"> Unsplash</Link>
+        </Typography>
         <Typography variant="body2" color="text.secondary">
           {place.note}
         </Typography>
@@ -58,6 +91,21 @@ const PlacesListItem = ({ place }) => {
         <Button size="small">Edit</Button>
       </CardActions>
     </Card>
+  );
+
+  return (
+    <>
+      {photo ? (
+        contentCard
+      ) : (
+        <>
+          <Skeleton variant="rectangular" height="140px" width="100%" />
+          <Skeleton variant="text" width="100%" />
+          <Skeleton variant="text" width="100%" />
+          <Skeleton variant="text" width="100%" />
+        </>
+      )}
+    </>
   );
 };
 

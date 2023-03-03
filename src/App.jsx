@@ -32,7 +32,7 @@ function App() {
     setPlaces(dataRes);
   };
 
-  console.log(places);
+  // console.log(places);
   // console.log(photo);
 
   return (
