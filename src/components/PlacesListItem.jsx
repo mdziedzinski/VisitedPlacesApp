@@ -26,7 +26,7 @@ const PlacesListItem = ({ place }) => {
           }`,
         },
         params: {
-          query: `${photoQuery} ? ${photoQuery} : 'city'`,
+          query: `${photoQuery}`,
           count: 1,
           per_page: 1,
           page: 1,
@@ -37,29 +37,13 @@ const PlacesListItem = ({ place }) => {
       });
 
     setPhoto(response.data.results[0]);
-    console.log(response.data.results[0]);
+
     return response;
   };
-
-  // const fetchRequest = async () => {
-  //   await fetch(
-  //     `https://api.unsplash.com/search/photos?page=1&photos?&query=${photoQuery}&client_id=${
-  //       import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY
-  //     }&per_page=1`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) =>
-  //       setTimeout(() => {
-  //         setPhoto(data.results[0]);
-  //       }, 50)
-  //     );
-  // };
 
   useEffect(() => {
     getImages();
   }, [photoQuery]);
-
-  console.log(photo);
 
   return (
     <>
@@ -78,12 +62,10 @@ const PlacesListItem = ({ place }) => {
             <Typography variant="overline" display="block" gutterBottom>
               visited on {date.toLocaleDateString()}
             </Typography>
-            <Typography variant="overline" display="block" gutterBottom>
+            <Typography variant="caption" display="block" gutterBottom>
               Photo by{" "}
-              <Link href={photo ? photo.user.links.html : "Loading"}>
-                {photo ? photo.user.first_name : "Loading"}
-              </Link>
-              {' '}on
+              <Link href={photo.user.links.html}>{photo.user.first_name}</Link>{" "}
+              on
               <Link href="https://unsplash.com/"> Unsplash</Link>
             </Typography>
             <Typography variant="body2" color="text.secondary">
