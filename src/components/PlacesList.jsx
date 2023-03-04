@@ -14,17 +14,23 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const PlacesList = ({ places }) => {
+const PlacesList = ({ places, searchTerm }) => {
   return (
     <Grid container spacing={2}>
       {places &&
-        places.map((place) => (
-          <Grid xs={12} sm={4} key={Math.random()}>
-            <Item>
-              <PlacesListItem place={place} />
-            </Item>
-          </Grid>
-        ))}
+        places
+          .filter(
+            (place) =>
+              place.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              place.country.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .map((place) => (
+            <Grid xs={12} sm={4} key={Math.random()}>
+              <Item>
+                <PlacesListItem place={place} />
+              </Item>
+            </Grid>
+          ))}
     </Grid>
   );
 };

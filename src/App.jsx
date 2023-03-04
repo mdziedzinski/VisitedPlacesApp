@@ -14,9 +14,14 @@ const client = "https://63f67f8a59c944921f752b54.mockapi.io/api/users";
 function App() {
   const [places, setPlaces] = useState("");
   const [placeName, setPlaceName] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const placeNameHandler = (input) => {
     setPlaceName(input);
+  };
+
+  const searchPlacesHandler = (searchInput) => {
+    setSearchTerm(searchInput);
   };
 
   useEffect(() => {
@@ -32,21 +37,18 @@ function App() {
     setPlaces(dataRes);
   };
 
-  // console.log(places);
-  // console.log(photo);
-
   return (
     <Box bgcolor="slategray">
       <Container>
         <Typography textAlign="center" variant="h1">
-          Places I've been
+          My travels
         </Typography>
-        <Search />
+        <Search searchPlacesHandler={searchPlacesHandler} />
         <AddNewPlace
           placeNameHandler={placeNameHandler}
           placeName={placeName}
         />
-        <PlacesList places={places} />
+        <PlacesList places={places} searchTerm={searchTerm} />
       </Container>
     </Box>
   );
