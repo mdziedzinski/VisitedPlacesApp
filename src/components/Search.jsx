@@ -6,29 +6,28 @@ const Search = ({ searchPlacesHandler }) => {
   const inputRef = useRef("");
 
   const handleSearchInput = (event) => {
-    if (event.key === "Enter") {
-      searchPlacesHandler(inputRef.current.value);
-    }
+    event.preventDefault();
+    searchPlacesHandler(inputRef.current.value);
   };
 
   return (
     <Paper elevation={5}>
-      <TextField
-        // onChange={handleSearchInput}
-        InputProps={{
-          sx: {
-            "& input": {
-              textAlign: "center",
+      <form onSubmit={handleSearchInput}>
+        <TextField
+          InputProps={{
+            sx: {
+              "& input": {
+                textAlign: "center",
+              },
             },
-          },
-        }}
-        inputRef={inputRef}
-        onKeyDown={handleSearchInput}
-        placeholder="Type a place and press enter..."
-        fullWidth
-        id="search"
-        variant="standard"
-      />
+          }}
+          inputRef={inputRef}
+          placeholder="Type a place and press enter..."
+          fullWidth
+          id="search"
+          variant="standard"
+        />
+      </form>
     </Paper>
   );
 };
