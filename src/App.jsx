@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
+
 import "./App.css";
-import axios from "axios";
+
 import PlacesList from "./components/PlacesList";
 import Box from "@mui/material/Box";
-import { createApi } from "unsplash-js";
+
 import AddNewPlace from "./components/AddNewPlace";
 import { Typography, Container } from "@mui/material";
 import Search from "./components/Search";
@@ -43,7 +43,10 @@ function App() {
         <Typography textAlign="center" variant="h1">
           My travels
         </Typography>
-        <Search searchPlacesHandler={searchPlacesHandler} />
+        <Search
+          searchPlacesHandler={searchPlacesHandler}
+          searchTerm={searchTerm}
+        />
         <AddNewPlace
           placeNameHandler={placeNameHandler}
           placeName={placeName}

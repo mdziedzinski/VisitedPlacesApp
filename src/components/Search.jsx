@@ -2,7 +2,7 @@ import React from "react";
 import { TextField, Paper } from "@mui/material";
 import { useRef } from "react";
 
-const Search = ({ searchPlacesHandler }) => {
+const Search = ({ searchPlacesHandler, searchTerm }) => {
   const inputRef = useRef("");
 
   const handleSearchInput = (event) => {

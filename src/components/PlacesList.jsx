@@ -24,7 +24,7 @@ const PlacesList = ({ places, searchTerm }) => {
               place.country.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((place) => (
-            <Grid xs={12} sm={4} key={Math.random()}>
+            <Grid xs={12} sm={4} key={place.id}>
               <Item>
                 <PlacesListItem place={place} />
               </Item>
