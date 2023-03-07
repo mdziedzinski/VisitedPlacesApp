@@ -28,7 +28,7 @@ const PlacesListItem = ({ place }) => {
         <Card>
           <CardMedia
             component="img"
-            alt={place.note}
+            alt={place.alt_description}
             height="140"
             image={photo ? photo.urls.small : place.photo}
           />
