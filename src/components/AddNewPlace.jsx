@@ -33,7 +33,12 @@ const AddNewPlace = ({ placeNameHandler, placeName }) => {
               <PhotoField />
             </Grid>
             <Grid item justifyContent="center" xs={12} padding={2}>
-              <Button fullWidth color="secondary" variant="contained" type="submit">
+              <Button
+                fullWidth
+                color="secondary"
+                variant="contained"
+                type="submit"
+              >
                 Save memory
               </Button>
             </Grid>

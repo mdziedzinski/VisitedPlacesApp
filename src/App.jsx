@@ -1,41 +1,16 @@
-import { useState, useEffect } from "react";
-
-import "./App.css";
-
+import { useEffect } from "react";
 import PlacesList from "./components/PlacesList";
 import Box from "@mui/material/Box";
-
 import AddNewPlace from "./components/AddNewPlace";
 import { Typography, Container } from "@mui/material";
 import Search from "./components/Search";
-
-const client = "https://63f67f8a59c944921f752b54.mockapi.io/api/users";
+import usePlacesContext from "./hooks/usePlacesContext";
 
 function App() {
-  const [places, setPlaces] = useState("");
-  const [placeName, setPlaceName] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const placeNameHandler = (input) => {
-    setPlaceName(input);
-  };
-
-  const searchPlacesHandler = (searchInput) => {
-    setSearchTerm(searchInput);
-  };
-
+  const { fetchPlaces } = usePlacesContext();
   useEffect(() => {
-    fetchClient();
+    fetchPlaces();
   }, []);
-
-  const fetchClient = async () => {
-    const data = await fetch(
-      `https://63f67f8a59c944921f752b54.mockapi.io/api/users`
-    );
-    const dataRes = await data.json();
-
-    setPlaces(dataRes);
-  };
 
   return (
     <Box bgcolor="slategray">
@@ -43,15 +18,9 @@ function App() {
         <Typography textAlign="center" variant="h1">
           My travels
         </Typography>
-        <Search
-          searchPlacesHandler={searchPlacesHandler}
-          searchTerm={searchTerm}
-        />
-        <AddNewPlace
-          placeNameHandler={placeNameHandler}
-          placeName={placeName}
-        />
-        <PlacesList places={places} searchTerm={searchTerm} />
+        <Search />
+        <AddNewPlace />
+        <PlacesList />
       </Container>
     </Box>
   );

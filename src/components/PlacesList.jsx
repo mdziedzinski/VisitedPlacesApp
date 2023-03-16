@@ -2,6 +2,7 @@ import * as React from "react";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
+import usePlacesContext from "../hooks/usePlacesContext";
 
 import PlacesListItem from "./PlacesListItem";
 
@@ -13,7 +14,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const PlacesList = ({ places, searchTerm }) => {
+const PlacesList = () => {
+  const { places } = usePlacesContext;
   return (
     <Grid container spacing={2}>
       {places &&
@@ -26,6 +28,7 @@ const PlacesList = ({ places, searchTerm }) => {
           .map((place) => (
             <Grid xs={12} sm={4} key={place.id}>
               <Item>
+                {console.log(places)}
                 <PlacesListItem place={place} />
               </Item>
             </Grid>
