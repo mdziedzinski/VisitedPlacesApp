@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PlacesContext from "../components/context/places";
+import PlacesContext from "../components/context/placesContext";
 
 function usePlacesContext() {
   return useContext(PlacesContext);

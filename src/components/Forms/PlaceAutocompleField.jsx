@@ -1,13 +1,13 @@
 import React from "react";
 import { TextField } from "@mui/material";
-import { useRef } from "react";
+import usePlacesContext from "../../hooks/usePlacesContext";
 import { usePlacesWidget } from "react-google-autocomplete";
 
-const PlaceAutocompleteField = ({placeNameHandler}) => {
+const PlaceAutocompleteField = () => {
+  const { placeNameHandler } = usePlacesContext();
   const { ref: materialRef } = usePlacesWidget({
     apiKey: import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY,
     onPlaceSelected: (place) => {
-      console.log(place);
       placeNameHandler(place.formatted_address);
     },
     inputAutocompleteValue: "country",

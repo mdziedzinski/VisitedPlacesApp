@@ -6,19 +6,21 @@ import RatingField from "./Forms/RatingField";
 import PhotoField from "./Forms/PhotoField";
 import DateField from "./Forms/DateField";
 
+
 const onSubmit = (e) => {
   e.preventDefault();
   console.log("submitted");
 };
 
-const AddNewPlace = ({ placeNameHandler, placeName }) => {
+const AddNewPlace = () => {
+  
   return (
     <form onSubmit={onSubmit}>
       <Paper elevation={12}>
         <Container>
           <Grid sx={{ maxWidth: "100%", marginBlock: 3 }} container spacing={0}>
             <Grid item xs={4} padding={2}>
-              <PlaceAutocompleteField placeNameHandler={placeNameHandler} />
+              <PlaceAutocompleteField />
             </Grid>
             <Grid item xs={4} padding={2}>
               <DateField />

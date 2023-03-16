@@ -24,7 +24,11 @@ const Provider = ({ children }) => {
 
   const createPlace = async (title) => {
     const response = await axios.post(placesApi, {
-      title,
+      city,
+      date,
+      rating,
+      photo,
+      note,
     });
     const updatedPlaces = [...places, response.data];
     setBooks(updatedPlaces);
@@ -58,6 +62,8 @@ const Provider = ({ children }) => {
     editPlaceById,
     createPlace,
     fetchPlaces,
+    searchPlacesHandler,
+    searchTerm,
   };
 
   return (

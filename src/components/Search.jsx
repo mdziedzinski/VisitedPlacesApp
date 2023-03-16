@@ -1,8 +1,10 @@
 import React from "react";
 import { TextField, Paper } from "@mui/material";
 import { useRef } from "react";
+import usePlacesContext from "../hooks/usePlacesContext";
 
-const Search = ({ searchPlacesHandler, searchTerm }) => {
+const Search = () => {
+  const { searchPlacesHandler } = usePlacesContext();
   const inputRef = useRef("");
 
   const handleSearchInput = (event) => {

@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const PlacesList = () => {
-  const { places } = usePlacesContext;
+  const { places, searchTerm } = usePlacesContext();
   return (
     <Grid container spacing={2}>
       {places &&
@@ -28,7 +28,6 @@ const PlacesList = () => {
           .map((place) => (
             <Grid xs={12} sm={4} key={place.id}>
               <Item>
-                {console.log(places)}
                 <PlacesListItem place={place} />
               </Item>
             </Grid>
