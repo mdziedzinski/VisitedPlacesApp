@@ -6,14 +6,12 @@ import RatingField from "./Forms/RatingField";
 import PhotoField from "./Forms/PhotoField";
 import DateField from "./Forms/DateField";
 
-
 const onSubmit = (e) => {
   e.preventDefault();
   console.log("submitted");
 };
 
 const AddNewPlace = () => {
-  
   return (
     <form onSubmit={onSubmit}>
       <Paper elevation={12}>
@@ -23,7 +21,7 @@ const AddNewPlace = () => {
               <PlaceAutocompleteField />
             </Grid>
             <Grid item xs={4} padding={2}>
-              <DateField />
+              <DateField name="date" />
             </Grid>
             <Grid item xs={4} padding={2}>
               <RatingField />

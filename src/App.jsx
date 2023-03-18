@@ -5,6 +5,9 @@ import AddNewPlace from "./components/AddNewPlace";
 import { Typography, Container } from "@mui/material";
 import Search from "./components/Search";
 import usePlacesContext from "./hooks/usePlacesContext";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 
 function App() {
   const { fetchPlaces } = usePlacesContext();

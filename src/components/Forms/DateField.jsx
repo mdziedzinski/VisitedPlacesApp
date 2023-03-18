@@ -7,6 +7,7 @@ const DateField = () => {
       required
       id="date"
       fullWidth
+      // name="date"
       label="Pick the date"
       placeholder="When was it?"
       type="date"
