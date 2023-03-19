@@ -64,6 +64,8 @@ const Provider = ({ children }) => {
     fetchPlaces,
     searchPlacesHandler,
     searchTerm,
+    placeNameHandler,
+    placeName,
   };
 
   return (

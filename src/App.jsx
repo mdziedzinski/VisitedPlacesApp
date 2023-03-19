@@ -7,7 +7,7 @@ import Search from "./components/Search";
 import usePlacesContext from "./hooks/usePlacesContext";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import * as yup from "yup";
 
 function App() {
   const { fetchPlaces } = usePlacesContext();

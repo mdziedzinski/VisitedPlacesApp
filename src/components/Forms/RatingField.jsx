@@ -7,7 +7,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const RatingField = () => {
   const [value, setValue] = useState(0);
-  console.log({ value });
+  // console.log({ value });
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
