@@ -16,6 +16,7 @@ import DateField from "./Forms/DateField";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import usePlacesContext from "../hooks/usePlacesContext";
 
 const schema = yup.object().shape({
   place: yup.string().required(),
@@ -27,9 +28,18 @@ const schema = yup.object().shape({
 
 const AddNewPlace = () => {
   const methods = useForm();
+  const { createPlace } = usePlacesContext();
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data.place);
+    createPlace(
+      data.place[0].long_name,
+      data.place[2].long_name,
+      data.date,
+      data.rating,
+      data.photo,
+      data.note
+    );
   };
 
   return (
@@ -46,16 +56,16 @@ const AddNewPlace = () => {
                 <PlaceAutocompleteField />
               </Grid>
               <Grid item xs={4} padding={2}>
-                <DateField name="date" />
+                <DateField />
               </Grid>
               <Grid item xs={4} padding={2}>
-                <RatingField name="rating" />
+                <RatingField />
               </Grid>
               <Grid item xs={6} padding={2}>
-                <NoteField name="note" />
+                <NoteField />
               </Grid>
               <Grid item xs={6} padding={2}>
-                <PhotoField name="photo" />
+                <PhotoField />
               </Grid>
               <Grid item justifyContent="center" xs={12} padding={2}>
                 <Button

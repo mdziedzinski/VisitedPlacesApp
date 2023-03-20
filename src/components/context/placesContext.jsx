@@ -22,16 +22,17 @@ const Provider = ({ children }) => {
     setSearchTerm(searchInput);
   };
 
-  const createPlace = async (title) => {
+  const createPlace = async (city, country, date, rating, photo, note) => {
     const response = await axios.post(placesApi, {
       city,
+      country,
       date,
       rating,
       photo,
       note,
     });
     const updatedPlaces = [...places, response.data];
-    setBooks(updatedPlaces);
+    setPlaces(updatedPlaces);
   };
 
   const deletePlaceById = async (id) => {
@@ -39,7 +40,7 @@ const Provider = ({ children }) => {
     const updatedPlaces = places.filter((place) => {
       return place.id !== id;
     });
-    setBooks(updatedPlaces);
+    setPlaces(updatedPlaces);
   };
 
   const editPlaceById = async (id, newTitle) => {
@@ -53,7 +54,7 @@ const Provider = ({ children }) => {
       return place;
     });
 
-    setBooks(updatedPlaces);
+    setPlaces(updatedPlaces);
   };
 
   const valueToShare = {

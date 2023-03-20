@@ -6,7 +6,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "@mui/material";
-
+import { Rating } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Skeleton from "@mui/material/Skeleton";
 import unsplashAPI from "./unsplashAPI";
 
@@ -30,7 +32,7 @@ const PlacesListItem = ({ place }) => {
             component="img"
             alt={place.alt_description}
             height="140"
-            image={photo ? photo.urls.small : place.photo}
+            image={place.photo ? place.photo : photo.urls.small}
           />
           <CardContent>
             <Typography variant="caption" display="block" gutterBottom>
@@ -44,6 +46,13 @@ const PlacesListItem = ({ place }) => {
             </Typography>
             <Typography variant="overline" display="block" gutterBottom>
               visited on {date.toLocaleDateString()}
+              <Rating
+                readOnly
+                value={place.rating}
+                icon={<FavoriteIcon color="error" />}
+                emptyIcon={<FavoriteBorderIcon />}
+                style={{ margin: 5 }}
+              />
             </Typography>
 
             <Typography variant="body2" color="text.secondary">

@@ -4,20 +4,9 @@ import { useRef } from "react";
 import { usePlacesWidget } from "react-google-autocomplete";
 import { useFormContext, Controller } from "react-hook-form";
 import usePlacesContext from "../../hooks/usePlacesContext";
+import AutoComplete from "react-google-autocomplete";
 
 const PlaceAutocompleteField = () => {
-  const { placeNameHandler, placeName } = usePlacesContext();
-
-  const { ref: materialRef } = usePlacesWidget({
-    apiKey: import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY,
-
-    onPlaceSelected: (place) => {
-      console.log(place);
-      placeNameHandler(place.formatted_address);
-    },
-    inputAutocompleteValue: "country",
-  });
-
   const {
     control,
     formState: { errors },
@@ -27,16 +16,24 @@ const PlaceAutocompleteField = () => {
     <Controller
       name="place"
       control={control}
-      render={({ field: { inputRef, ...field } }) => (
-        <TextField
-          {...field}
-          fullWidth
+      defaultValue=""
+      rules={{ required: true }}
+      render={({ field: { onChange } }) => (
+        <AutoComplete
           required
-          label="Type a city..."
-          placeholder="New York..."
-          variant="outlined"
-          // value={placeName}
-          inputRef={materialRef}
+          language="en"
+          style={{
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#333333",
+            color: "white",
+            borderRadius: 5,
+            border: "1px solid #717171",
+            fontSize: "1rem",
+            "&:hover": { border: "10px solid #f00" },
+          }}
+          apiKey={import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY}
+          onPlaceSelected={(place) => onChange(place.address_components)}
         />
       )}
     />
