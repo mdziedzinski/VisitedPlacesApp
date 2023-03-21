@@ -46,6 +46,8 @@ const PlacesListItem = ({ place }) => {
             </Typography>
             <Typography variant="overline" display="block" gutterBottom>
               visited on {date.toLocaleDateString()}
+            </Typography>
+            <Typography display="block" gutterBottom>
               <Rating
                 readOnly
                 value={place.rating}
@@ -54,7 +56,6 @@ const PlacesListItem = ({ place }) => {
                 style={{ margin: 5 }}
               />
             </Typography>
-
             <Typography variant="body2" color="text.secondary">
               {place.note}
             </Typography>
