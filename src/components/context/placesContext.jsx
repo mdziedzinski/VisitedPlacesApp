@@ -22,7 +22,16 @@ const Provider = ({ children }) => {
     setSearchTerm(searchInput);
   };
 
-  const createPlace = async (city, country, date, rating, photo, note) => {
+  const createPlace = async (
+    city,
+    country,
+    date,
+    rating,
+    photo,
+    note,
+    unsplashPhoto,
+    unsplashAuthor
+  ) => {
     const response = await axios.post(placesApi, {
       city,
       country,
@@ -30,6 +39,8 @@ const Provider = ({ children }) => {
       rating,
       photo,
       note,
+      unsplashPhoto,
+      unsplashAuthor,
     });
     const updatedPlaces = [...places, response.data];
     setPlaces(updatedPlaces);

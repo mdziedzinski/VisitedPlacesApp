@@ -24,27 +24,20 @@ const PlacesListItem = ({ place }) => {
     deletePlaceById(place.id);
   };
 
-  useEffect()
-// unsplashAPI(city)
-
   return (
     <>
-      {place.photo ? (
+      {place.city ? (
         <Card>
           <CardMedia
             component="img"
             alt={place.alt_description}
             height="140"
-            image={place.photo ? place.photo : unsplashAPI()}
+            image={place.photo}
           />
           <CardContent>
-            {photo && (
+            {place.photo.includes("unsplash") && (
               <Typography variant="caption" display="block" gutterBottom>
-                Photo by{" "}
-                <Link href={photo.user.links.html}>
-                  {photo.user.first_name}
-                </Link>
-                on
+                Photo generated from
                 <Link href="https://unsplash.com/"> Unsplash</Link>
               </Typography>
             )}

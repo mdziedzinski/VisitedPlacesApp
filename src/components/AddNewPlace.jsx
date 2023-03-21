@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Container,
@@ -17,6 +17,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import usePlacesContext from "../hooks/usePlacesContext";
+import unsplashAPI from "./unsplashAPI";
 
 const schema = yup.object().shape({
   place: yup.string().required(),
@@ -30,16 +31,31 @@ const AddNewPlace = () => {
   const methods = useForm();
   const { createPlace } = usePlacesContext();
 
-  const onSubmit = (data) => {
-    console.log(data.place);
-    createPlace(
-      data.place[0].long_name,
-      data.place[2].long_name,
-      data.date,
-      data.rating,
-      data.photo,
-      data.note
-    );
+  const generatePhoto = async (term) => {
+    const unsplashPhoto = unsplashAPI(term);
+    return unsplashPhoto;
+  };
+
+  const onSubmit = async (data) => {
+    if (data.photo) {
+      createPlace(
+        data.place[0].long_name,
+        data.place[2].long_name,
+        data.date,
+        data.rating,
+        data.photo,
+        data.note
+      );
+    } else {
+      createPlace(
+        data.place[0].long_name,
+        data.place[2].long_name,
+        data.date,
+        data.rating,
+        await generatePhoto(data.place[0].long_name),
+        data.note
+      );
+    }
   };
 
   return (
