@@ -2,7 +2,7 @@
 
 ![Design preview of the app](./preview.png) 
 
-:construction: App in progress, preview and live app will be here soon :construction:
+:construction: App under construction, live app will be here soon :construction:
 
 ## Welcome! 👋
 
