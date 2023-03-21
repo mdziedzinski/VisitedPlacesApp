@@ -36,7 +36,7 @@ const Provider = ({ children }) => {
   };
 
   const deletePlaceById = async (id) => {
-    await axios.delete(`${placesApi}${id}`);
+    await axios.delete(`${placesApi}/${id}`);
     const updatedPlaces = places.filter((place) => {
       return place.id !== id;
     });

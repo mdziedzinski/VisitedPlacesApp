@@ -11,36 +11,43 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Skeleton from "@mui/material/Skeleton";
 import unsplashAPI from "./unsplashAPI";
-
 import { useState, useEffect } from "react";
+import usePlacesContext from "../hooks/usePlacesContext";
 
 const PlacesListItem = ({ place }) => {
-  const date = new Date(place.date);
-  const photoQuery = place.city;
-
+  const { deletePlaceById } = usePlacesContext();
   const [photo, setPhoto] = useState("");
 
-  useEffect(() => {
-    unsplashAPI(photoQuery, setPhoto);
-  }, [photoQuery]);
+  const date = new Date(place.date);
+
+  const handleDeleteClick = () => {
+    deletePlaceById(place.id);
+  };
+
+  useEffect()
+// unsplashAPI(city)
 
   return (
     <>
-      {photo ? (
+      {place.photo ? (
         <Card>
           <CardMedia
             component="img"
             alt={place.alt_description}
             height="140"
-            image={place.photo ? place.photo : photo.urls.small}
+            image={place.photo ? place.photo : unsplashAPI()}
           />
           <CardContent>
-            <Typography variant="caption" display="block" gutterBottom>
-              Photo by{" "}
-              <Link href={photo.user.links.html}>{photo.user.first_name}</Link>{" "}
-              on
-              <Link href="https://unsplash.com/"> Unsplash</Link>
-            </Typography>
+            {photo && (
+              <Typography variant="caption" display="block" gutterBottom>
+                Photo by{" "}
+                <Link href={photo.user.links.html}>
+                  {photo.user.first_name}
+                </Link>
+                on
+                <Link href="https://unsplash.com/"> Unsplash</Link>
+              </Typography>
+            )}
             <Typography gutterBottom variant="h5" component="div">
               {place.city}, {place.country}
             </Typography>
@@ -60,7 +67,9 @@ const PlacesListItem = ({ place }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Delete</Button>
+            <Button size="small" onClick={handleDeleteClick}>
+              Delete
+            </Button>
             <Button size="small">Edit</Button>
           </CardActions>
         </Card>
@@ -70,6 +79,12 @@ const PlacesListItem = ({ place }) => {
           <Skeleton variant="text" width="100%" />
           <Skeleton variant="text" width="100%" />
           <Skeleton variant="text" width="100%" />
+          <CardActions>
+            <Button size="small" onClick={handleDeleteClick}>
+              Delete
+            </Button>
+            <Button size="small">Edit</Button>
+          </CardActions>
         </>
       )}
     </>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const unsplashAPI = async (query, setstate) => {
+const unsplashAPI = async (query) => {
   const response = await axios
     .get(`https://api.unsplash.com/search/photos`, {
       headers: {
@@ -9,7 +9,7 @@ const unsplashAPI = async (query, setstate) => {
         }`,
       },
       params: {
-        query: `${query}`,
+        query: query,
         count: 1,
         per_page: 1,
         page: 1,
@@ -19,8 +19,8 @@ const unsplashAPI = async (query, setstate) => {
       console.log(error.response);
     });
 
-  setstate(response.data.results[0]);
-
+  const unsplashPhoto = response.data.results[0];
+  console.log(unsplashPhoto);
   return response;
 };
 
