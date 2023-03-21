@@ -10,7 +10,7 @@ This is Visited Places App, that lets you manage your favorite visited places.
 
 ## Features
 
-In this app you can manage your favorite places in the world, by performing CRUD operations using REST api build on [mockapi.io](https://github.com/mockapi-io/docs/wiki). You can search, add, delete and modify places. It also includes integration with UnsplasApi to generate photo if it's not provided, and react-google-autocomplete to simplify adding new place. App is styled with Material UI and the form is handled by React-Hook-Form. 
+In this app you can manage your favorite places in the world, by performing CRUD operations using REST api build on [mockapi.io](https://github.com/mockapi-io/docs/wiki). You can search, add, delete and modify places. It also includes integration with UnsplashApi to generate photo if it's not provided, and react-google-autocomplete to simplify adding new place. App is styled with Material UI and the form is handled by React-Hook-Form. 
 
 ## Tools used
 
