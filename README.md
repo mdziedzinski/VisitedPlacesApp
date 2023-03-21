@@ -10,9 +10,7 @@ This is Visited Places App, that lets you manage your favorite visited places.
 
 ## Features
 
-In this app you can perform cation that allows to filter colors depending on id fetched from reqres API and show item's details. It was built in React (TypeScript).
-It includes server side filtering and pagination, error handling and url search params. 
-UI was built using Material UI, thanks to that, there is simple theme toggle for dark and light theme. 
+In this app you can manage your favorite places in the world, by performing CRUD operations using REST api build on [mockapi.io](https://github.com/mockapi-io/docs/wiki). You can search, add, delete and modify places. It also includes integration with UnsplasApi to generate photo if it's not provided, and react-google-autocomplete to simplify adding new place. App is styled with Material UI and the form is handled by React-Hook-Form. 
 
 ## Tools used
 
